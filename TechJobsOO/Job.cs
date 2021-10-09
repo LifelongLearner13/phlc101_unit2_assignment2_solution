@@ -37,5 +37,20 @@ namespace TechJobsOO
         {
             return HashCode.Combine(Id);
         }
+
+        private static string defaultValue(string str)
+        {
+            return str != null && str != "" ? str : "Data not available";
+        }
+
+        public override string ToString()
+        {
+            if(Name == null && EmployerName == null && EmployerLocation == null && JobType == null && JobCoreCompetency == null)
+            {
+                return "OOPS! This job does not seem to exist.";
+            }
+
+            return $"\nID: {Id}\nName: {defaultValue(Name)}\n Employer: {defaultValue(EmployerName.Value)}\n Location: {defaultValue(EmployerLocation.Value)}\n Position Type: {defaultValue(JobType.Value)}\n Core Competency: {defaultValue(JobCoreCompetency.Value)}\n";
+        }
     }
 }
